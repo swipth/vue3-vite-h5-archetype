@@ -1,13 +1,8 @@
-<!--
- * @Author: swipth
- * @Description:首页
--->
 <script setup lang="ts">
-
 </script>
 
 <template>
-  <div>IndexView</div>
+  <router-view/>
 </template>
 
 <style scoped lang="less">
