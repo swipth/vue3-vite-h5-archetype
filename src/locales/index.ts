@@ -4,7 +4,6 @@ import { createI18n } from "vue-i18n";
 import { getLanguage } from "@/config/clientStorage";
 import commonEn from "./en/common";
 import commonZh from "./zh/common";
-import App from "@/App.vue";
 
 const messages = {
   en: {
@@ -26,7 +25,7 @@ export function translateTitle(title:string) {
   return title;
 }
 
-export function setupI18n(app:App) {
+export function setupI18n(app:any) {
   app.use(i18n);
   app.config.globalProperties.translateTitle = translateTitle;
 }

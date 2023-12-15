@@ -19,11 +19,11 @@ export default defineConfig({
     open: false,
     host: '0.0.0.0',
     proxy: {
-      "/visitApi": {
-        target: 'https://webapi.pharmablock.com',
+      [""+process.env.VITE_BASE_API]: {
+        target: process.env.VITE_SERVER_URL,
         changeOrigin: true,
         ws: true,
-        rewrite: (path) => path.replace(new RegExp('^/visitApi'), '')
+        rewrite: (path) => path.replace(new RegExp('^/'+process.env.VITE_BASE_API), '')
       }
     }
   },
