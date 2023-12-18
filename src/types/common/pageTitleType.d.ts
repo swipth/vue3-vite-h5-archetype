@@ -1,6 +1,6 @@
 import { TranslateResult } from "vue-i18n";
 
-import { AddressType } from "@/types/common";
+import { AddressType } from "@/types/common/apiResponse.ts";
 export interface TitleType {
   title: string | TranslateResult;
   id: string | number;

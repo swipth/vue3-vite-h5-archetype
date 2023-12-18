@@ -1,11 +1,14 @@
+// 本地化存储的KEY 需要大写
 const localStorageKey = {
-  tokenKey: "{{key}}_admin_token",
+  tokenKey: "ACCESS_TOKEN_{{key}}".toLocaleUpperCase(),
   // 语言 en 英文 zh 中文
   defaultLanguage: navigator.language === "zh-CN" ? "zh" : "en",
-  languageKey: "language",
-  websiteKey: "website",
+  languageKey: "LOCAL_LANGUAGE",
+  websiteKey: "LOCAL_WEBSITE",
   defaultWebsite: "cn",
-  ErrorModalNumber: "ErrorModalNumber"
+  ErrorModalNumber:"ERROR_MODAL_NUMBER"
 }
-export const getLanguage = () => localStorage.getItem(localStorageKey.languageKey) || localStorageKey.defaultLanguage;
-export const getToken = () => localStorage.getItem(localStorageKey.tokenKey)||""
+
+export const getLanguage = () => window.$wujie?.props?.language || localStorageKey.defaultLanguage;
+
+export const getToken = () => window.$wujie?.props?.token
