@@ -2,22 +2,7 @@
  * @description 导出网络配置
  **/
 
-export const networkKey: {
-  contentType: string;
-  contentJsonType: string;
-  contentTextType: string;
-  contentMultipartFormType: string;
-  requestTimeout: number;
-  messageName: string;
-  statusName: string;
-  successName: string;
-  successCode: (string | number)[];
-  dataName: string;
-  noShowApiMessage: string[];
-  loginPath: string;
-  messageDuration:number;
-  defaultLogoutTime:number
-} = {
+export const networkKey = {
   // 网络传输类型 // form-data 一般配合qs
   contentType: "application/x-www-form-urlencoded;charset=UTF-8",
   // json
@@ -46,6 +31,11 @@ export const networkKey: {
   // 消息框消失时间
   messageDuration:3000,
   // 用户静默退出时间
-  defaultLogoutTime:2 * 60 * 60 * 1000
+  defaultLogoutTime:2 * 60 * 60 * 1000,
+  // 服务端响应头返回token字段名称
+  InterfaceToken: "InterfaceToken",
+  // 请求头令牌字段
+  Authorization: "Authorization",
+  auth: undefined
 }
 

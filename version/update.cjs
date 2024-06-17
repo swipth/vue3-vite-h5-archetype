@@ -10,7 +10,7 @@ const envObj = parse(fs.readFileSync(envPath, "utf8"));
 const writeVersion = () => {
   // 写入文件
   fs.writeFile(
-    path.join(__dirname, "../../../" + envObj["VITE_OUT_PUT_NAME"] + "/static/version.json"),
+    path.join(__dirname, "../" + envObj["VITE_OUT_PUT_NAME"] + "/static/version.json"),
     JSON.stringify({
       success: true,
       data: { version: currentVersion },

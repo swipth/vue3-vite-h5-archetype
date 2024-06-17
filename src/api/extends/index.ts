@@ -1,6 +1,6 @@
-import { ajax } from "../ajax";
-import { paramsSerialize } from "../serialize";
-import {networkKey} from "../config/network";
+import { ajax } from "../ajax.ts";
+import { paramsSerialize } from "../serialize.ts";
+import {networkKey} from "../config/network.ts";
 
 export const ajaxGet = (url:string, params={}) => ajax({ baseURL: import.meta.env.VUE_APP_CONFERENCE_API, method: "GET", url, params });
 

@@ -1,4 +1,4 @@
-import {ajaxGet, ajaxPost} from "./index";
+import {ajaxGet, ajaxPost} from "./index.ts";
 
 // 参考示例编写http请求
 export const ExampleApi = {

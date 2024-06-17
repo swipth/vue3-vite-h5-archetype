@@ -5,6 +5,7 @@ import {translateTitle} from "@/locales";
 import {getToken, getLanguage} from "@/config/clientStorage";
 import {showErrorModal, showMessage} from "@/api/tip";
 import {AjaxRes} from "@/types/common/apiResponse.ts";
+import {networkKey} from "@/api/config/network.ts";
 
 axios.defaults.baseURL = import.meta.env.VITE_BASE_API;
 axios.defaults.timeout = 30000;
@@ -73,10 +74,7 @@ export const ajax = ({url = "", method = "GET", params = {}, data = {}, baseURL,
       headers,
       data,
       withCredentials: true,
-      auth: {
-        username: "publicservcice",
-        password: "BWB344793CA83C91631D2792586477F",
-      },
+      auth: networkKey.auth,
       responseType, // default json  options are: 'arraybuffer', 'document', 'json', 'text', 'stream'  browser only: 'blob'
       validateStatus: function (status: number) {
         return status >= 200 && status < 300; // default
