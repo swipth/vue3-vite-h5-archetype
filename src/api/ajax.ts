@@ -3,7 +3,7 @@ import router from "../router";
 import { showNotify} from "vant";
 import {translateTitle} from "@/locales";
 import {getToken, getLanguage} from "@/config/clientStorage";
-import {showErrorModal, showMessage} from "@/api/tip";
+import {handleAxiosResponseAction, showErrorModal, showMessage} from "@/api/tip";
 import {AjaxRes} from "@/types/common/apiResponse.ts";
 import {networkKey} from "@/api/config/network.ts";
 
@@ -27,15 +27,18 @@ axios.interceptors.request.use(
 axios.interceptors.response.use(
   (response: AxiosResponse) => {
     switch (response.data.code) {
+      case 401:
+        showNotify({ type: 'warning', message: translateTitle("登录过期") });
+        router.push({path: "/login"});
+        break;
       case 403:
-        showNotify({
-          type: "warning",
-          message: response.data.message,
-          onClose: () => {
-            router.replace("/403").then(() => {
-            });
-          },
-        });
+        showNotify({ type: 'warning', message: translateTitle("没有权限") });
+        break;
+      case 404:
+        showNotify({ type: 'warning', message: translateTitle("接口不存在") });
+        break;
+      case 405:
+        showNotify( {type: 'warning', message: translateTitle("接口请求方法错误")} );
         break;
       case 500:
           showErrorModal(translateTitle("接口提醒"));
@@ -48,23 +51,11 @@ axios.interceptors.response.use(
     return response;
   },
   (error: AxiosError) => {
-    if (error.response && error.response.status === 500) {
-      showErrorModal("Interface Error",);
-    } else if (error.response && error.response.status === 400) {
-      showErrorModal("Interface Error",);
-    } else if (error.response && error.response.status === 404) {
-      showErrorModal("Interface Url 404",);
-    } else if (error.response && error.response.status === 403) {
-      showErrorModal("Interface 403",);
-    } else if (error.response && error.response.status === 401) {
-      // refresh_token 过期需要重新授权
-      router.replace("/index").then(() => {
-      });
-    }
+    handleAxiosResponseAction.handleStatusError(error.response)
     return Promise.reject(error);
   }
 );
-export const ajax = ({url = "", method = "GET", params = {}, data = {}, baseURL, headers, responseType}:AxiosRequestConfig): Promise<AjaxRes> => {
+export const ajax = ({url = "", method = "GET", params = {}, data , baseURL, headers, responseType}:AxiosRequestConfig): Promise<AjaxRes> => {
   return new Promise((resolve, reject) => {
     axios({
       url,
