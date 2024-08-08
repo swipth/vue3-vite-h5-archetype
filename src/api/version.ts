@@ -3,7 +3,7 @@ import {ajax} from "@/api/ajax";
 
 export const checkVersion = () => ajax({ url: "/static/version.json", baseURL: "/" });
 import pkg from "../../package.json";
-import {AjaxRes} from "@/types/common/apiResponse.ts";
+import {AjaxRes} from "@/types/common/apiResponse";
 /**
  * 版本检测
  */

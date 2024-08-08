@@ -2,8 +2,8 @@ import {TranslateResult} from "vue-i18n";
 import {showDialog, showNotify} from "vant";
 import router from "@/router";
 import {AxiosResponse} from "axios";
-import {networkKey} from "@/api/config/network.ts";
-import {getToken, setToken} from "@/config/clientStorage.ts";
+import {networkKey} from "@/api/config/network";
+import {getToken, setToken} from "@/config/clientStorage";
 
 export const showMessage = (content: string, type = "error") => {
   if (type == "error")

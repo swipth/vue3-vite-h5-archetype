@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 const { currentVersion } = require("./info.cjs");
 // 选择 env 文件 判断打包环境指定对应的服务器id
-const envFile = process.argv[2] === "production" ? "../../../.env.production" : "../../../.env.test";
+const envFile = process.argv[2] === "production" ? "../.env.production" : "../.env.test";
 // env环境变量的路径
 const envPath = path.resolve(__dirname, envFile);
 // env对象 读取文件

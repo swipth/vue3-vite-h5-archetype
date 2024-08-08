@@ -4,8 +4,8 @@ import { showNotify} from "vant";
 import {translateTitle} from "@/locales";
 import {getToken, getLanguage} from "@/config/clientStorage";
 import {handleAxiosResponseAction, showErrorModal, showMessage} from "@/api/tip";
-import {AjaxRes} from "@/types/common/apiResponse.ts";
-import {networkKey} from "@/api/config/network.ts";
+import {AjaxRes} from "@/types/common/apiResponse";
+import {networkKey} from "@/api/config/network";
 
 axios.defaults.baseURL = import.meta.env.VITE_BASE_API;
 axios.defaults.timeout = 30000;
