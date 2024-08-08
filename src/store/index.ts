@@ -6,7 +6,8 @@
 
 import { createStore } from "vuex";
 
-const modulesFiles = import.meta.globEager("./modules/*.js");
+const modulesFiles = import.meta.glob("./modules/*.js",{ eager: true });
+
 const pathList = [];
 
 for (const path in modulesFiles) {
