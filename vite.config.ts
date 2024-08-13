@@ -1,5 +1,5 @@
 import * as path from "path";
-
+import AutoImport from 'unplugin-auto-import/vite';
 import {defineConfig} from 'vite'
 import vue from '@vitejs/plugin-vue'
 import eslintPlugin from 'vite-plugin-eslint';
@@ -30,6 +30,9 @@ export default defineConfig({
   plugins: [
     vue(),
     eslintPlugin(),
+    AutoImport({
+      resolvers: [VantResolver()],
+    }),
     Components({
       resolvers: [VantResolver()],
     }),

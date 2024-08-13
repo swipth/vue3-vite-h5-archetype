@@ -8,9 +8,9 @@ import {AjaxRes} from "@/types/common/apiResponse";
 import {networkKey} from "@/api/config/network";
 
 axios.defaults.baseURL = import.meta.env.VITE_BASE_API;
-axios.defaults.timeout = 30000;
+axios.defaults.timeout = networkKey.requestTimeout;
 axios.interceptors.request.use(
-  (config: AxiosRequestConfig) => {
+  (config: any) => {
     if (getToken()) {
       config.headers = {
         openId: getToken(),

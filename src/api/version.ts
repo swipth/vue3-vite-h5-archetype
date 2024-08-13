@@ -1,7 +1,7 @@
 // 获取版本信息
 import {ajax} from "@/api/ajax";
 
-export const checkVersion = () => ajax({ url: "/static/version.json", baseURL: "/" });
+export const checkVersion = () => ajax({ url: "/static/version.json", baseURL: import.meta.env.BASE_URL });
 import pkg from "../../package.json";
 import {AjaxRes} from "@/types/common/apiResponse";
 /**
@@ -10,7 +10,7 @@ import {AjaxRes} from "@/types/common/apiResponse";
 export function versionCheck() {
   checkVersion().then((res:AjaxRes) => {
     if (res.success) {
-      if (" V" + pkg.version !== res.data.version) {
+      if ("V" + pkg.version !== res.data.version) {
         refreshPage();
       }
     }
